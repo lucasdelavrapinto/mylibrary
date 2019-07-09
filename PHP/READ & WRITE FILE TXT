@@ -1,0 +1,36 @@
+$req = $request->all();
+$email = $req['email'];
+ 
+function writeTXT($texto){
+    $fp = fopen('data.txt', 'a');
+    fwrite($fp, $texto."\n");
+    fclose($fp);
+}
+ 
+ 
+function readTXT($email){
+    $filename = "data.txt";
+    $handle = fopen($filename, "r");
+    $contents = fread($handle, filesize($filename));
+ 
+    fclose($handle);
+ 
+    $variavel = $contents;
+    $a = str_replace(' """ ','',$variavel);
+    $b = str_replace("\n",",",$a);
+    $array = explode(',', $b);
+ 
+    if (stripos(json_encode($array),$email) !== false) {
+        return true;
+    }else{
+        return false;
+    }
+}
+ 
+readTXT($email);
+ 
+if (readTXT($email) == true) {
+    //nao faz nada;
+}else{
+    writeTXT($email);
+}
