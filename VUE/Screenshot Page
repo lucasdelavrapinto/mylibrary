@@ -1,0 +1,26 @@
+// Requer html2canvas
+// https://github.com/niklasvh/html2canvas
+
+//Exemplo
+$("#takescreenshot").click(function (){
+	takescreenshot();
+});
+
+// Função que tira Screenshot
+function takescreenshot(){
+  html2canvas(document.body).then(function(canvas){
+    $("#minhadivimage").show('slow');
+    $("#downloadminhaimage").attr('href', canvas.toDataURL("image/png"));
+    $("#downloadminhaimage").attr('download', 'suporte.png');
+  });
+
+  $("#downloadminhaimage").click(function (){});
+}
+
+//OBS
+// canvas.toDataURL("image/png") é convertido para base64 e pode ser transformado em imagem.
+
+$fonte = [
+	'Canal' => 'myPHPnotes',
+	'Link' => 'https://www.youtube.com/watch?v=ZmmRzAAOeQU'
+];

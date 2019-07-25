@@ -1,0 +1,28 @@
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    atual_senha: null,
+    nova_senha: null,
+    repetir_nova_senha: null,
+    isShow: null,
+  },
+  methods: {
+    isEqual: function(nova_senha, repetir_nova_senha){
+      if(nova_senha || repetir_nova_senha){
+        if (repetir_nova_senha.length > 0) {
+          if (repetir_nova_senha == nova_senha) {
+            app.isShow = true;
+            return "";
+          } else {
+            app.isShow = false;
+            return "Nova Senha não combina com a Repetida";
+          }
+        } else {app.isShow = false;}
+      }
+    }
+  }
+});
+
+</script>

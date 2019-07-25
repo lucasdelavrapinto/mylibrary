@@ -1,0 +1,28 @@
+//AUTOCOMPLETE JQUERY UI
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0-rc.2/jquery-ui.js'></script>
+
+var data = [
+        "ActionScript",
+        "BASIC",
+        "C",
+        "Erlang",
+        "Fortran",
+        "Groovy",
+        "Haskell",
+        "Java",
+        "Lisp",
+        "Perl",
+        "PHP",
+        "Scala"
+      ];
+
+$("#contas").autocomplete({
+    source: data
+});
+
+
+// Pode ser necessario usar da seguinte forma
+// data = {!! str_replace("'", "\'", json_encode($array)) !!};

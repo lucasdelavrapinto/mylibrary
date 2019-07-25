@@ -1,0 +1,43 @@
+//função JSs usando Sweetalert2
+function comsucesso(valor) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
+
+  Toast.fire({
+    type: 'success',
+    title: valor + ' com sucesso!'
+  })
+}
+
+// No controller eu uso 'cadastrado' ou 'removido'
+public function deletarLancamentos($id){
+    $decrypted = Crypt::decryptString($id);
+    $lancamento = Lancamento::find($decrypted);
+    if ($lancamento) {
+        $lancamento->delete();
+        session()->flash('alert-success', 'removido');
+        return back();
+    } else {
+        return back();
+    }
+}
+
+//No HTML(blade) eu uso essa validação
+
+@if(session('alert-success') == 'cadastrado')
+<script>
+  comsucesso('Cadastrado');
+</script>
+<?php session()->forget('alert-success'); ?>
+@elseif(session('alert-success') == 'removido')
+<script>
+  comsucesso('Removido');
+</script>
+<?php session()->forget('alert-success'); ?>
+@endif
+
+por fim eu uso um forget, pois se ele usar um refresh não irá mostrar o alerta novamente.
